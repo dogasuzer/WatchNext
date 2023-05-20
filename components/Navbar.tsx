@@ -3,10 +3,11 @@ import AccountMenu from '@/components/AccountMenu';
 import MobileMenu from '@/components/MobileMenu';
 import NavbarItem from '@/components/NavbarItem';
 import Image from 'next/image';
-import { BiBell } from 'react-icons/bi';
 import { BiSearchAlt } from 'react-icons/bi';
 import { FaChevronDown } from 'react-icons/fa';
 import useScrollStore from '@/hooks/useScrollStore';
+import SearchBar from './SearchBar';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const TOP_OFFSET = 66;
 
@@ -14,6 +15,8 @@ const Navbar = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
+
   const { setScroll } = useScrollStore();
   const handleNavbarItemClick = (destination: string) => {
     setScroll(destination);
@@ -36,6 +39,7 @@ const Navbar = () => {
   }, []);
 
   const toggleAccountMenu = useCallback(() => {
+    console.log('first');
     setShowAccountMenu(current => !current);
   }, []);
 
@@ -43,16 +47,20 @@ const Navbar = () => {
     setShowMobileMenu(current => !current);
   }, []);
 
+  const toggleSearchBar = useCallback(() => {
+    setShowSearchBar(current => !current);
+  }, []);
+
   return (
     <nav className="w-full fixed z-40">
       <div
-        className={`px-4 h-40 md:px-16 py-6 flex flex-row items-center transition duration-500 ${
+        className={` px-4 h-15 lg:h-40 md:px-16 py-6 flex flex-row items-center transition duration-500 ${
           showBackground ? 'bg-black bg-opacity-90' : ''
         }`}
       >
         <Image
           src="/images/logo.png"
-          className="hidden lg:flex "
+          className="hidden md:flex md:w-1/4 lg:w-1/5"
           width={400}
           height={200}
           alt="Logo"
@@ -82,17 +90,27 @@ const Navbar = () => {
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <BiSearchAlt className="w-20" />
+            {showSearchBar ? (
+              <div
+                className="flex bg-zinc-700 items-center rounded-md
+              bg-opacity-40 md:h-8 md:w-40 lg:w-60 h-6 gap-2 "
+              >
+                <SearchBar />
+                <AiOutlineClose
+                  onClick={toggleSearchBar}
+                  className="text-white md:w-8 w-4"
+                />
+              </div>
+            ) : (
+              <div onClick={toggleSearchBar}>
+                <BiSearchAlt className="text-white md:w-8 w-4" />
+              </div>
+            )}
           </div>
-          <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <BiBell className="w-20" />
-          </div>
-          <div
-            onClick={toggleAccountMenu}
-            className="flex flex-row items-center gap-2 cursor-pointer relative"
-          >
-            <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden"></div>
+
+          <div className="flex flex-row items-center gap-2 cursor-pointer relative">
             <FaChevronDown
+              onClick={toggleAccountMenu}
               className={`w-4 text-white fill-white transition ${
                 showAccountMenu ? 'rotate-180' : 'rotate-0'
               }`}
