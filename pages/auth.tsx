@@ -4,8 +4,8 @@ import { NextPageContext } from 'next';
 import { getSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
-import Input from '@/components/input';
 import Image from 'next/image';
+import Input from '@/components/Input';
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -125,7 +125,7 @@ const Auth = () => {
             </div>
             <p className="text-neutral-500 mt-12">
               {variant === 'login'
-                ? 'First time using watchNext?'
+                ? 'First time using WatchNext?'
                 : 'Already have an account?'}
               <span
                 onClick={toggleVariant}

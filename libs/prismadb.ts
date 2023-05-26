@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
-const db = global.prismadb || new PrismaClient();
-if (process.env.NODE_ENV !== 'production') global.prismadb = db;
+const prismadb = global.prismadb || new PrismaClient();
+if (process.env.NODE_ENV !== 'production') global.prismadb = prismadb;
 
-export default db;
+export default prismadb;

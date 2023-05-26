@@ -58,9 +58,9 @@ const Watch = () => {
 
   return (
     <div className=" h-screen">
-      <div className="bg-black w-full bg-opacity-20 z-50 hidden text-3xl px-10 py-10 md:flex absolute text-white ">
+      <div className="bg-black w-full bg-opacity-20 z-50 lg:text-3xl px-10 py-10 flex absolute text-white ">
         <button className="mr-20" onClick={goBack}>
-          <AiOutlineArrowLeft className="text-3xl" />
+          <AiOutlineArrowLeft />
         </button>
         <p className=" text-center">{data?.title}</p>
       </div>
