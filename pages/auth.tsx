@@ -32,7 +32,7 @@ const Auth = () => {
   const [password, setPassword] = useState('');
 
   const [variant, setVariant] = useState('login');
-
+  const REDIRECT_URL_AFTER_SIGN_IN = 'www.watchnext-coral.vercel.app';
   const toggleVariant = useCallback(() => {
     setVariant(currentVariant =>
       currentVariant === 'login' ? 'register' : 'login'
@@ -118,7 +118,7 @@ const Auth = () => {
               <div
                 onClick={(e: any) => {
                   e.preventDefault();
-                  signIn('google', { callbackUrl: '' });
+                  signIn('google', { callbackUrl: REDIRECT_URL_AFTER_SIGN_IN });
                 }}
                 className="w-full py-3 bg-white  rounded-md flex items-center justify-center cursor-pointer hover:opacity-80 transition"
               >
