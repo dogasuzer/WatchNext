@@ -69,7 +69,7 @@ const Auth = () => {
   }, [email, name, password, login]);
 
   return (
-    <div className="  h-full w-full lg:bg-[url('/images/hero.jpg')] lg:bg-no-repeat bg-center lg:bg-fixed lg:bg-cover ">
+    <div className="  h-screen w-screen  lg:bg-[url('/images/hero.jpg')] lg:bg-no-repeat bg-center  lg:bg-cover ">
       <div className=" bg-black w-full h-full lg:pb-20 lg:bg-opacity-50 ">
         <Image
           src="/images/logo.png"
