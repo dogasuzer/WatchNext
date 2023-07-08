@@ -32,7 +32,7 @@ const Auth = () => {
   const [password, setPassword] = useState('');
 
   const [variant, setVariant] = useState('login');
-  const REDIRECT_URL_AFTER_SIGN_IN = 'www.watchnext-coral.vercel.app';
+  // const REDIRECT_URL_AFTER_SIGN_IN = 'www.watchnext-coral.vercel.app';
   const toggleVariant = useCallback(() => {
     setVariant(currentVariant =>
       currentVariant === 'login' ? 'register' : 'login'
@@ -79,7 +79,7 @@ const Auth = () => {
           alt="Logo"
         />
         <div className="flex  justify-center items-center">
-          <div className=" bg-black bg-opacity-70  content-center  bg-opacity-70 px-16 py-16 my-48 lg:my-6 lg:w-2/5 lg:max-w-md rounded-md w-full ">
+          <div className=" bg-black content-center  bg-opacity-70 px-16 py-16 my-48 lg:my-6 lg:w-2/5 lg:max-w-md rounded-md w-full ">
             <h2 className="text-white text-4xl mb-8 font-semibold">
               {variant === 'login' ? 'Sign in' : 'Register'}
             </h2>
@@ -118,7 +118,7 @@ const Auth = () => {
               <div
                 onClick={(e: any) => {
                   e.preventDefault();
-                  signIn('google', { callbackUrl: REDIRECT_URL_AFTER_SIGN_IN });
+                  signIn('google', { callbackUrl: '' });
                 }}
                 className="w-full py-3 bg-white  rounded-md flex items-center justify-center cursor-pointer hover:opacity-80 transition"
               >
