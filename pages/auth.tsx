@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { NextPageContext } from 'next';
-import { getSession, signIn } from 'next-auth/react';
+import { getSession, signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 import Image from 'next/image';
@@ -30,15 +30,22 @@ const Auth = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const session = useSession();
 
   const [variant, setVariant] = useState('login');
-  // const REDIRECT_URL_AFTER_SIGN_IN = 'www.watchnext-coral.vercel.app';
+  const REDIRECT_URL_AFTER_SIGN_IN =
+    'www.watchnext-coral.vercel.app/api/auth/callback/google';
   const toggleVariant = useCallback(() => {
     setVariant(currentVariant =>
       currentVariant === 'login' ? 'register' : 'login'
     );
   }, []);
 
+  useEffect(() => {
+    if (session?.status === 'authenticated') {
+      router.push('/');
+    }
+  });
   const login = useCallback(async () => {
     try {
       await signIn('credentials', {
@@ -48,7 +55,7 @@ const Auth = () => {
         callbackUrl: '/'
       });
 
-      router.push('');
+      router.push('/');
     } catch (error) {
       console.log(error);
     }
