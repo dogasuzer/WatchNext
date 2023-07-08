@@ -116,7 +116,10 @@ const Auth = () => {
             </button>
             <div className="flex flex-row items-center gap-4 mt-8 justify-center">
               <div
-                onClick={() => signIn('google', { callbackUrl: '' })}
+                onClick={(e: any) => {
+                  e.preventDefault();
+                  signIn('google', { callbackUrl: '' });
+                }}
                 className="w-full py-3 bg-white  rounded-md flex items-center justify-center cursor-pointer hover:opacity-80 transition"
               >
                 <div className="px-6 lg:px-2 ">Sing in with Google</div>
