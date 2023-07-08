@@ -122,7 +122,7 @@ const Auth = () => {
                 }}
                 className="w-full py-3 bg-white  rounded-md flex items-center justify-center cursor-pointer hover:opacity-80 transition"
               >
-                <div className="px-6 lg:px-2 ">Sing in with Google</div>
+                <div className="px-6 lg:px-2 ">Sign in with Google</div>
                 <FcGoogle size={24} />
               </div>
             </div>
