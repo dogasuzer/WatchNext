@@ -62,7 +62,7 @@ const Home = () => {
         <Billboard />
       </div>
 
-      <div className="pb-40">
+      <div className="pb-40 pt-20">
         <div ref={trendingRef}>
           <MovieList title="Trending Now" data={movies} />
         </div>

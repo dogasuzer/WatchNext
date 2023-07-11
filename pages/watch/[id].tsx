@@ -67,7 +67,7 @@ const Watch = () => {
 
       <div className="flex justify-center z-0 items-center h-screen">
         {videoUrl && (
-          <ReactPlayer url={videoUrl} controls width="90%" height="auto" />
+          <ReactPlayer url={videoUrl} controls height="90%" width="90%" />
         )}
       </div>
     </div>

@@ -6,6 +6,7 @@ import FavoriteButton from '@/components/FavoriteButton';
 import useInfoModalStore from '@/hooks/useInfoModalStore';
 import useMovie from '@/hooks/useMovie';
 import WatchNowButton from './WatchNowButton';
+import ReactPlayer from 'react-player';
 
 interface InfoModalProps {
   visible?: boolean;
@@ -42,13 +43,21 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
           } transform duration-300 relative flex-auto bg-zinc-900 drop-shadow-md`}
         >
           <div className="relative h-96">
-            <video
+            {/* <video
               poster={data?.thumbnailUrl}
               autoPlay
               muted
               loop
               src={data?.videoUrl}
               className="w-full brightness-[60%] object-cover h-full"
+            /> */}
+            <ReactPlayer
+              url={data?.videoUrl}
+              playing={true}
+              loop={true}
+              muted={true}
+              controls={false}
+              width="100%"
             />
             <div
               onClick={handleClose}
